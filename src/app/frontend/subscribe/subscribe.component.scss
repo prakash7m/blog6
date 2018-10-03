@@ -1,0 +1,13 @@
+@import 'vars';
+.subscribe {
+    background-color: $base-color;
+    border-radius: 0px;
+    border: 0px;
+    color: #fff;
+    margin: 0px !important;
+    padding: 50px;
+
+    .text-muted {
+        color: #ccc !important;
+    }
+}

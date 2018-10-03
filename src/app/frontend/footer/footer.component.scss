@@ -1,0 +1,43 @@
+$footer-bg: #444;
+footer {
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+    background: $footer-bg;
+    color: #fff;
+    .text-muted {
+        color: #aaa !important;
+    }
+
+    
+}
+$social-bg: darken($footer-bg, 10%);
+.social {
+    font-size: 20px;
+    background-color: $social-bg;  
+    padding: 40px 0px 40px 0px; 
+    color: lighten($social-bg, 30%); 
+    a.social-icon {        
+        background-color: lighten($social-bg, 10%);
+        padding: 5px;
+        width: 40px;
+        margin: 0px 3px;
+        display: inline-block;
+        text-align: center;
+        border-radius: 50%;
+        height: 40px;
+        &:hover {
+            background-color: lighten($social-bg, 5%);
+        }
+        
+    }
+    .links {
+        font-size: 13px !important;
+        color: lighten($social-bg, 50%);
+        &.separator {
+            margin: 0px 5px;
+        }
+    }
+    .social-cols {
+        margin: 10px 0px;
+    }
+}

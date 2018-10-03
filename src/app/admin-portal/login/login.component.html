@@ -1,0 +1,23 @@
+<div class="container" role="main">
+  <div class="jumbotron centered">
+    <form class="form-signin" [formGroup]="formGroup" (submit)="onSubmit()">
+      <h1 class="h1  font-weight-normal">Login</h1>
+      <span class="text-muted heading-sub">Use your domain login credentials.</span>
+      <label for="inputEmail" class="sr-only">Username</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Username" required autofocus formControlName="username">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required formControlName="password" autocomplete="new-password">
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember my login on this computer
+        </label>
+      </div>
+      <button [disabled]="!formGroup.valid" class="btn btn-lg btn-primary btn-block" type="submit">
+          <i *ngIf="isProgress" class="fa fa-circle-o-notch fa-spin fa-fw margin-bottom"></i>
+          <span *ngIf="!isProgress">Login</span>
+        </button>
+      <p class="mt-5 mb-3 text-muted  text-center">Not a member? To request an account, please contact your JIRA administrators.</p>
+      <p class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</p>
+    </form>
+  </div>
+</div>

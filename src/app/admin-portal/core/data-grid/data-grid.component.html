@@ -1,0 +1,28 @@
+<div class=" d-none d-md-block">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" *ngFor="let column of columns; let counter=index;">{{column.text}}</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of rows; let counter=index">
+        <th scope="row">{{counter + 1}}</th>
+        <td *ngFor="let column of columns; let counter=index;">
+          <a *ngIf="column.link" [routerLink]="[linkWithId(column, row)]" href="#">{{row[column.dataIndex]}}</a>
+          <span *ngIf="!column.link">{{row[column.dataIndex]}}</span>
+        </td>
+        <td>
+          <a *ngFor="let action of actions" href="javascript: void(0)" (click)="action.handler(row, $event)">{{action.text}}</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="d-md-none small-device">
+  <ng-content select=".small"></ng-content>
+</div>
+<div *ngIf="!rows.length" class="alert alert-light text-center">{{emptyText}}</div>
+<div *ngIf="errorMessage" class="alert alert-error text-center">{{errorMessage}}</div>

@@ -1,0 +1,21 @@
+<div class="form-panel" [bMask]="busy$" [bMessages]="busyMessages">
+  <form [formGroup]="formGroup" *ngIf="formGroup" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <input type="text" formControlName="name" class="form-control"
+          id="name" aria-describedby="nameHelp" placeholder="Enter name">        
+        <small class="form-text v-error" *ngIf="isFieldInvalid('name')">Please input a valid name</small>
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="tags" class="form-control"
+          id="tags" aria-describedby="tagHelp" placeholder="Enter tags (comma separated)">        
+        <small class="form-text v-error" *ngIf="isFieldInvalid('tags')">Please input a valid tags</small>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="saveDisabled()"><i class=" cui-check"></i></button>
+      <a class="btn btn-secondary" (click)="onCancel($evemt)">
+        <i class=" cui-chevron-top"></i>
+      </a>
+      <a class="btn btn-danger" (click)="onDelete()">
+        <i class="cui-circle-x"></i>
+      </a>
+  </form>
+</div>

@@ -1,0 +1,41 @@
+<div class="form-panel" [bMask]="busy$" [bMessages]="busyMessages">
+  <form [formGroup]="formGroup" *ngIf="formGroup" (ngSubmit)="submitForm()">
+
+    <fieldset>
+      <legend>User Form</legend>
+      <div class="form-group">
+        <label for="email">Username</label>
+        <input type="text" formControlName="username" class="form-control"
+          id="username" aria-describedby="usernameHelp" placeholder="Enter username" autocomplete="username">
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        <small class="form-text v-error" *ngIf="isFieldInvalid('username')">Please
+          input a valid username</small>
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" formControlName="email" class="form-control"
+          id="email" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="email">
+        <small class="form-text v-error" *ngIf="isFieldInvalid('email')">Please
+          input a valid email</small>
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+      <div class="form-group" *ngIf="formGroup.get('password')">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-control"
+          id="password" placeholder="Password" autocomplete="new-password">
+        <small class="form-text v-error" *ngIf="isFieldInvalid('password')">Please
+          input a valid password</small>
+      </div>
+      <div class="form-group" *ngIf="formGroup.get('password')">
+        <label for="cpassword">Confirm Password</label>
+        <input type="password" formControlName="confirmPassword"
+          class="form-control" id="cpassword" placeholder="Confirm your password" autocomplete="new-password">
+        <small class="form-text v-error"
+          *ngIf="isFieldInvalid('confirmPassword')">Please confirm password</small>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <a class="btn btn-secondary" [routerLink]="['/admin/users']">Cancel</a>
+    </fieldset>
+  </form>  
+</div>
+<b-error-panel [errorResponse]="errorResponse$"></b-error-panel>

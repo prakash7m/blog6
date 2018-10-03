@@ -1,0 +1,25 @@
+<div class="form-panel" [bMask]="busy$" [bMessages]="busyMessages">
+  <form [formGroup]="formGroup" *ngIf="formGroup" (ngSubmit)="submitForm()">
+
+    <fieldset>
+      <legend>Category Form</legend>
+      <div class="form-group">
+        <label for="email">Name</label>
+        <input type="text" formControlName="name" class="form-control"
+          id="name" aria-describedby="nameHelp" placeholder="Enter name" autocomplete="name">
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        <small class="form-text v-error" *ngIf="isFieldInvalid('name')">Please input a valid name</small>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea formControlName="description" class="form-control"
+          id="description" aria-describedby="descriptionHelp" placeholder="Enter description" autocomplete="description"></textarea>
+        <small class="form-text v-error" *ngIf="isFieldInvalid('description')">Please input a valid description</small>
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <a class="btn btn-secondary" [routerLink]="['/admin/category']">Cancel</a>
+    </fieldset>
+  </form>  
+</div>
+<b-error-panel [errorResponse]="errorResponse$"></b-error-panel>

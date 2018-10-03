@@ -1,0 +1,32 @@
+<b-toolbar>
+  <a class="btn btn-outline-primary active" routerLink="/admin/gallery/create"><i
+      class="fa fa-plus"></i> Add</a>
+</b-toolbar>
+<div [bMask]="busy$" [bMessages]="busyMessages">
+  <div id="ui-view">
+    <div class="animated fadeIn">
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-xl-3" *ngFor="let row of rows" >
+          <div class="card">
+            <div class="card-header"><a href="{{getMedia(row)}}" target="_blank">{{row.name}}</a></div>
+            <div class="bg">
+              <div class="card-body cover-image" [style.backgroundImage]="'url(' +
+                getMedia(row) + ')'" (click)="editVisible=row._id">                
+              </div>
+              <b-image-edit *ngIf="editVisible==row._id" [image]="row" (cancel)="editVisible=null"></b-image-edit>
+            </div>            
+            <div class="footer">
+              <span class="badge badge-secondary" *ngFor="let tag of row.tags">{{tag}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!rows.length" class="alert alert-light text-center">{{emptyText}}</div>
+</div>
+<b-toolbar footer="true">
+  <a class="btn btn-outline-primary active" href="javascript:void(0)"
+    (click)="loadGallery()"><i class="fa fa-refresh"></i> Refresh</a>
+</b-toolbar>
+<b-error-panel [errorResponse]="errorResponse$"></b-error-panel>

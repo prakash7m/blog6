@@ -1,0 +1,25 @@
+<b-toolbar>
+  <a class="btn btn-outline-primary active" routerLink="/admin/users/create"><i
+      class="fa fa-plus"></i> Add</a>
+</b-toolbar>
+<b-data-grid [columns]="columns" [rows]="rows" [emptyText]="emptyText"
+  [errorMessage]="errorMessage" [actions]="actions" [bMask]="busy$"
+  [bMessages]="busyMessages">
+  <div class="small">
+    <div class="list-group">
+      <div class="list-group-item list-group-item-action flex-column
+        align-items-start" href="#" *ngFor="let row of rows; let n = index;">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{n+1}}. {{row.username}}</h5>
+          <small>{{row.email}}</small>
+        </div>
+        <p class="mb-1">Some other details</p>
+      </div>
+    </div>
+  </div>
+</b-data-grid>
+<b-toolbar footer="true">
+  <a class="btn btn-outline-primary active" href="javascript:void(0)"
+    (click)="loadUsers()"><i class="fa fa-refresh"></i> Refresh</a>
+</b-toolbar>
+<b-error-panel [errorResponse]="errorResponse$"></b-error-panel>

@@ -1,0 +1,56 @@
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+.container {
+    height: 100%;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+}
+@include media-breakpoint-down(sm) {
+    .jumbotron {
+        width: 100%;
+        border: 0px;
+        box-shadow: none;
+    }
+}
+.form-signin {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    margin: 0 auto;
+    h1 {
+        margin-bottom: 0px;
+    }
+    span.heading-sub {
+        margin-bottom: 20px;
+        display: inline-block;
+    }
+  }
+  .form-signin .checkbox {
+    font-weight: 400;
+  }
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+ }
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }

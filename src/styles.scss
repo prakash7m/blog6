@@ -1,0 +1,153 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Exo:300,400,500,600,700');
+@import "../node_modules/prismjs/themes/prism-tomorrow.css";
+$fa-font-path: "./assets/fonts/FontAwesome"; 
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Exo:300,400,500,600,700');
+@import 'vars';
+// If you want to override variables do it here
+@import "../node_modules/@coreui/icons/css/coreui-icons.css";
+@import "../node_modules/flag-icon-css/css/flag-icon.css";
+@import "../node_modules/simple-line-icons/css/simple-line-icons.css";
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+@import "styles/style";
+body {
+  margin: 0px;
+  padding: 0px;
+  background: #ddd;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: Exo;
+  margin: 0px;
+}
+
+a {
+  color: $base-color;
+  &:hover {
+    color: $base-color;
+    // text-decoration: none;
+  }
+  &:active {
+    color: $base-color;
+  }
+}
+
+.card-footer {
+  background-color: #fff;
+  border: 0px;
+  border-bottom: 1px solid #eee;
+}
+
+.center-box{
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index:99;
+  margin:auto;
+  height:200px;
+  width:200px;
+  border:1px solid #000;
+  text-align:center;
+  line-height:200px;
+}
+
+.form-panel {
+  padding: 10px;
+  margin: 10px;
+}
+
+.v-error {
+  color: #ff0000;
+}
+
+.pane {
+  background-color: #fff;
+  padding: 1px 20px 20px 20px;
+}
+
+section {
+  background: #fff;
+}
+
+.error-msg {
+  color: #ff0000;
+  padding: 0px 10px;
+}
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}
+fieldset {
+  border: 1px solid #ccc;
+  padding: 20px;
+  legend {
+    width: auto;
+    padding: 0px 10px;
+    font-size: 20px;
+  }
+}
+
+.mask-parent {
+  position: relative;
+  display: block;
+  .mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .mask-msg {
+      background: #eee;
+      padding: 10px 20px;
+      border: 1px solid #888;
+      border-radius: 5px;
+      i {
+        font-size: 35px;
+        padding: 0px 10px;
+        position: absolute;
+        top: calc(50% - 16px);
+        transform: translateY(-50%);
+        opacity: 0.1;
+        left: calc(50% - 26px);
+        z-index: 1;
+      }
+    }
+  }
+}
+
+.btn {
+  border-radius: 0px;
+}
+
+a:not([href]):not([tabindex]) {
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (min-width: 992px) {
+    .header-fixed .app-body {
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .app-body {
+        margin-top: 0px;
+    }
+}

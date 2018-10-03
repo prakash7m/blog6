@@ -1,0 +1,48 @@
+<header [class.border-bottom]="cssOffCanvas" [class.off-canvas]="cssOffCanvas"
+  [class.fixed]="cssFixed" [class.is-scrolled]="isScrolled" #headercmp>
+  <div class="container">
+    <div class="header-nav styled d-flex align-items-center">
+      <div class="p-2 mr-auto">
+        <h1>
+          <a class="hamburger d-inline-block d-md-none"
+            (click)="burgerClosed=!burgerClosed;">
+            <i class="fa fa-bars" [class.fa-rotate-90]="!burgerClosed"></i>
+          </a>
+          <a href="" class="logo-text">
+            <span class="green">JS</span><span>B</span>
+          </a>
+        </h1>
+      </div>
+      <div class="p-2 d-none d-md-block">
+        <a href="">About us</a>
+      </div>
+      <div class="p-2 d-none d-md-block">
+        <a href="">Contact us</a>
+      </div>
+      <div class="p-2 d-none d-md-block">
+        <a routerLink="/">Posts Home</a>
+      </div>
+      <div class="p-2 d-none d-md-block">
+        <a routerLink="/post">Post</a>
+      </div>
+      <div class="p-2 d-none d-md-block">
+        <a routerLink="/admin/login">Login</a>
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+<div class="hamburger-menu d-md-none" [class.closed]="burgerClosed">
+  <div class="header-space"></div>
+  <div class="container">
+    <a href="#">Home</a>
+    <a href="#">Posts</a>
+    <a href="#">Popular</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="#">Login</a>
+  </div>  
+</div>
+<div class="hamburger-menu-mask d-md-none" [class.active]="!burgerClosed"></div>
