@@ -26,7 +26,10 @@ export class PostListComponent extends DataGridClass<PostModel> implements OnIni
     text: 'Slug'
   }, {
     dataIndex: 'active',
-    text: 'Active'
+    text: 'Active',
+    renderer: function (v, item) {
+      return v ? 'Active' : 'Inactive';
+    }
   }];
   emptyText = 'Posts not found';
   actions = [{

@@ -3,6 +3,7 @@ export interface Column {
   text: string;
   width?: number;
   link?: string;
+  renderer?: (v: string, item: any) => {};
 }
 
 export interface Row {

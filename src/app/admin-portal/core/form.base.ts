@@ -38,6 +38,7 @@ export class FormBase<T> implements OnInit {
           .pipe(take(1))
           .subscribe((item: T) => {
             this.formGroup.patchValue(item);
+            this.onPatchValue(item);
           });
       });
   }
@@ -124,5 +125,9 @@ export class FormBase<T> implements OnInit {
       return false;
     }
     this.editMode ? this.submitEditForm() : this.submitCreateForm();
+  }
+
+  onPatchValue(item) {
+    console.log('onPatchValue not implemented');
   }
 }

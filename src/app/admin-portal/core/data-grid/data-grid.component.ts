@@ -21,4 +21,11 @@ export class DataGridComponent<T = any> implements OnInit {
     return `${column.link}/${row._id}`;
   }
 
+  getValue (row, column) {
+    let value = row[column.dataIndex];
+    if (column.renderer) {
+      value = column.renderer(value, row);
+    }
+    return value
+  }
 }

@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NgSelectModule, NG_SELECT_DEFAULT_CONFIG } from '@ng-select/ng-select';
+import { CovalentTextEditorModule } from '@covalent/text-editor';
 
 import { PostsRoutingModule } from './posts-routing.module';
 import { PostListComponent } from './post-list/post-list.component';
@@ -30,7 +31,8 @@ import { CategoriesModule } from '../categories/categories.module';
     }),
     EffectsModule.forFeature([PostsEffect]),
     NgSelectModule,
-    CategoriesModule
+    CategoriesModule,
+    CovalentTextEditorModule
   ],
   providers: [PostsService, {
     provide: NG_SELECT_DEFAULT_CONFIG,

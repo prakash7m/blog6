@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -15,6 +15,7 @@ import { PostModel } from '.././post.model';
 import { FormBase } from '../../core/form.base';
 import { StateHelper } from '../../core/state.helper';
 import { RequestLoadCategories, REQUEST_LOAD_CATEGORIES } from '../../categories/store/categories.actions';
+import { TdTextEditorComponent } from '@covalent/text-editor';
 
 
 @Component({
@@ -36,6 +37,13 @@ export class PostFormComponent extends FormBase<PostModel> implements OnInit {
 
   categoriesState$ = StateHelper.stateForFeature(this.store, 'categoriesFeature', 'categories');
   categoriesBusy$: Observable<boolean> = StateHelper.progressFor(this.categoriesState$, [REQUEST_LOAD_CATEGORIES]);
+  contentEditorOptions: any = {
+    lineWrapping: true
+  };
+
+  @ViewChild('textEditor') private _textEditor: TdTextEditorComponent;
+  content = '';
+
   constructor(route: ActivatedRoute, private fb: FormBuilder, private store: Store<any>) {
     super(route);
   }
@@ -59,7 +67,7 @@ export class PostFormComponent extends FormBase<PostModel> implements OnInit {
       category: [null],
       active: [false],
       meta: [null],
-      readtime: [null]
+      readtime: [null, [Validators.required, Validators.min(1)]]
     });
   }
 
@@ -68,13 +76,17 @@ export class PostFormComponent extends FormBase<PostModel> implements OnInit {
   }
 
   submitCreateForm() {
-    this.store.dispatch(new RequestCreatePost(this.formGroup.value));
+    this.store.dispatch(new RequestCreatePost({...this.formGroup.value, content: this._textEditor.value }));
   }
 
   submitEditForm() {
     const post = {
-      _id: this.editMode, ...this.formGroup.value
+      _id: this.editMode, ...this.formGroup.value, content: this._textEditor.value
     };
     this.store.dispatch(new RequestEditPost(post));
+  }
+
+  onPatchValue(item) {
+    this.content = item.content;
   }
 }

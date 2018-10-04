@@ -11,8 +11,8 @@
       <tr *ngFor="let row of rows; let counter=index">
         <th scope="row">{{counter + 1}}</th>
         <td *ngFor="let column of columns; let counter=index;">
-          <a *ngIf="column.link" [routerLink]="[linkWithId(column, row)]" href="#">{{row[column.dataIndex]}}</a>
-          <span *ngIf="!column.link">{{row[column.dataIndex]}}</span>
+          <a *ngIf="column.link" [routerLink]="[linkWithId(column, row)]" href="#">{{getValue(row, column)}}</a>
+          <span *ngIf="!column.link">{{getValue(row, column)}}</span>
         </td>
         <td>
           <a *ngFor="let action of actions" href="javascript: void(0)" (click)="action.handler(row, $event)">{{action.text}}</a>
